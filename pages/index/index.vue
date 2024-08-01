@@ -35,6 +35,23 @@
 				<uni-icons type="right" size="16" color="#333"></uni-icons>
 			</view>
 		</view>
+
+
+		<!-- 展示区域 -->
+		<view class="select">
+			<common-title></common-title>
+			<!-- scroll-x 可在x轴滑动   -->
+			<view class="content">
+				<scroll-view scroll-x>
+					<view class="box" v-for="item in 8">
+						<image src="../../common/images/preview_small.webp" mode="aspectFill"></image>
+					</view>
+				</scroll-view>
+			</view>
+
+		</view>
+
+
 	</view>
 </template>
 
@@ -113,6 +130,39 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
+			}
+		}
+
+		.select {
+			padding-top: 50rpx;
+
+			.content {
+				width: 720rpx;
+				margin-left: 30rpx;
+				margin-top: 30rpx;
+
+				scroll-view {
+					white-space: nowrap; //不换行，让元素一行上面（搭配 display: inline-block;）
+
+					.box {
+						width: 200rpx;
+						height: 430rpx;
+						display: inline-block; //将块元素改为行内块
+						margin-right: 15rpx;
+
+						image {
+							width: 100%;
+							height: 100%;
+							border-radius: 10rpx;
+						}
+					}
+
+					.box:last-child {
+						// 让box盒子里面的最后一个元素margin-right为30rpx
+						margin-right: 30rpx;
+					}
+
+				}
 			}
 		}
 	}
