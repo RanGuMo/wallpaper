@@ -39,7 +39,17 @@
 
 		<!-- 展示区域 -->
 		<view class="select">
-			<common-title></common-title>
+			<common-title>
+				<template #name>每日推荐</template>
+				<template #custom>
+					<view class="date">
+						<uni-icons type="calendar" size="18"></uni-icons>
+						<view class="text">
+							<uni-dateformat :date="Date.now()" format="dd日"></uni-dateformat>
+						</view>
+					</view>
+				</template>
+			</common-title>
 			<!-- scroll-x 可在x轴滑动   -->
 			<view class="content">
 				<scroll-view scroll-x>
@@ -50,6 +60,22 @@
 			</view>
 
 		</view>
+
+		<!-- 专题精选 -->
+		<view class="theme">
+			<common-title>
+				<template #name>专题精选</template>
+				<template #custom>
+					<navigator url="/pages/classify/classify" open-type="reLaunch" class="more">More+</navigator>
+				</template>
+			</common-title>
+
+			<view class="content">
+
+			</view>
+
+		</view>
+
 
 
 	</view>
@@ -136,6 +162,16 @@
 		.select {
 			padding-top: 50rpx;
 
+			.date {
+				color: #28b389;
+				display: flex;
+				align-items: center;
+
+				.text {
+					margin-left: 5rpx;
+				}
+			}
+
 			.content {
 				width: 720rpx;
 				margin-left: 30rpx;
@@ -163,6 +199,15 @@
 					}
 
 				}
+			}
+		}
+
+		.theme {
+			padding-top: 50rpx;
+
+			.more {
+				font-size: 32rpx;
+				color: #888;
 			}
 		}
 	}

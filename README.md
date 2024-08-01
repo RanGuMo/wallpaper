@@ -227,3 +227,98 @@ static目录下的文件，在app第一次启动时，解压到了app的外部�
 ```
 ![](README_files/3.jpg)
 ![](README_files/3.gif)
+
+### 2.4.组件具名插槽定义公共标题模块
+> uniapp中 只要遵循 components/组件名/组件名.vue 在其他页面无需导入，可以直接使用
+组件路径： `components/common-title/common-title.vue`
+```vue
+<template>
+	<view class="common-title">
+		<view class="name">
+			<slot name="name"></slot>
+		</view>
+		<view class="custom">
+			<slot name="custom"></slot>
+		</view>
+	</view>
+</template>
+
+<script setup>
+
+</script>
+
+<style lang="scss" scoped>
+	.common-title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 30rpx;
+
+		.name {
+			font-size: 40rpx
+		}
+	}
+</style>
+```
+使用`common-title`组件
+```vue
+<template>
+
+<!-- 展示区域 -->
+<view class="select">
+	<common-title>
+		<template #name>每日推荐</template>
+		<template #custom>
+			<view class="date">
+				<uni-icons type="calendar" size="18"></uni-icons>
+				<view class="text">
+					<uni-dateformat :date="Date.now()" format="dd日"></uni-dateformat>
+				</view>
+			</view>
+		</template>
+	</common-title>
+	
+
+</view>
+
+<!-- 专题精选 -->
+<view class="theme">
+	<common-title>
+		<template #name>专题精选</template>
+		<template #custom>
+			<navigator url="/pages/classify/classify" open-type="reLaunch" class="more">More+</navigator>
+		</template>
+	</common-title>
+
+	<view class="content">
+
+	</view>
+
+</view>
+</template>
+
+<style lang="scss" scoped>
+.select {
+	.date {
+		color: #28b389;
+		display: flex;
+		align-items: center;
+
+		.text {
+			margin-left: 5rpx;
+		}
+	}
+}
+
+.theme {
+	padding-top: 50rpx;
+
+	.more {
+		font-size: 32rpx;
+		color: #888;
+	}
+}
+</style>
+
+```
+![](README_files/4.jpg)
