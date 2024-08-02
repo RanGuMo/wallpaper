@@ -71,6 +71,7 @@
 			</common-title>
 
 			<view class="content">
+				<theme-item v-for="item in 8"></theme-item>
 
 			</view>
 
@@ -208,6 +209,14 @@
 			.more {
 				font-size: 32rpx;
 				color: #888;
+			}
+
+			.content {
+				margin-top: 30rpx;
+				padding: 0 30rpx;
+				display: grid; // 网格布局
+				gap: 15rpx; // 间隙15rpx
+				grid-template-columns: repeat(3, 1fr); // 重复三列，平均分配
 			}
 		}
 	}
