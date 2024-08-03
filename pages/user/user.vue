@@ -10,7 +10,7 @@
     </view>
     <view class="section">
       <view class="list">
-        <view class="row" v-for="itme in 3">
+        <view class="row">
           <view class="left">
             <uni-icons type="download-filled" size="20" color="#28b389"></uni-icons>
             <view class="text">我的下载</view>
@@ -19,6 +19,36 @@
             <view class="text">66</view>
             <uni-icons type="right" size="15" color="#aaa"></uni-icons>
           </view>
+        </view>
+
+        <view class="row">
+          <view class="left">
+            <uni-icons type="download-filled" size="20" color="#28b389"></uni-icons>
+            <view class="text">我的评分</view>
+          </view>
+          <view class="right">
+            <view class="text">66</view>
+            <uni-icons type="right" size="15" color="#aaa"></uni-icons>
+          </view>
+        </view>
+
+        <view class="row">
+          <view class="left">
+            <uni-icons type="download-filled" size="20" color="#28b389"></uni-icons>
+            <view class="text">联系客服</view>
+          </view>
+          <view class="right">
+            <view class="text"></view>
+            <uni-icons type="right" size="15" color="#aaa"></uni-icons>
+          </view>
+          <!-- #ifdef MP -->
+          <!-- 如果是小程序 -->
+          <button open-type="contact">联系客服</button>
+          <!-- #endif -->
+          <!-- #ifndef MP -->
+          <!-- 如果不是小程序 -->
+          <button @click="clickContact">拨打电话</button>
+          <!-- #endif -->
         </view>
 
       </view>
@@ -45,6 +75,12 @@
   import {
     ref
   } from "vue";
+
+  const clickContact = () => {
+    uni.makePhoneCall({
+      phoneNumber: "114"
+    })
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -95,24 +131,39 @@
           padding: 0 30rpx;
           height: 100rpx;
           border-bottom: 1px solid #eee;
+          position: relative;
+
           &:last-child {
             border-bottom: 0;
           }
-          .left{
+
+          .left {
             display: flex;
             align-items: center;
-            .text{
+
+            .text {
               padding-left: 20rpx;
               color: #666;
             }
           }
-          .right{
+
+          .right {
             display: flex;
             align-items: center;
-            .text{
+
+            .text {
               font-size: 28rpx;
               color: #aaa;
             }
+          }
+
+          button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100rpx;
+            width: 100%;
+            opacity: 0.7;
           }
         }
       }
