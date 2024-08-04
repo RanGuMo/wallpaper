@@ -27,6 +27,14 @@
 		  {
 		    "navigationBarTitleText" : "分类列表"
 		  }
+		},
+		{
+		  "path" : "pages/preview/preview",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "预览",
+        "navigationStyle": "custom"
+		  }
 		}
 	],
 	"globalStyle": {
