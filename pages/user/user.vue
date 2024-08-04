@@ -1,5 +1,5 @@
 <template>
-  <view class="userLayout">
+  <view class="userLayout pageBg">
     <view class="userInfo">
       <view class="avatar">
         <image src="../../static/images/xxmLogo.png" mode=""></image>
@@ -132,7 +132,7 @@
           height: 100rpx;
           border-bottom: 1px solid #eee;
           position: relative;
-
+          background: #fff;
           &:last-child {
             border-bottom: 0;
           }

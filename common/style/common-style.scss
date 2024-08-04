@@ -2,5 +2,13 @@ view,swiper,swiper-item{
 	box-sizing: border-box;
 }
 
+// 背景色
+.pageBg{
+	background: 
+	linear-gradient(to bottom,transparent,#fff 400rpx), // 上到下，透明色到白色，白色从400rpx开始
+	linear-gradient(to right,#beecd8 20%,#F4E2D8); //左到有
+	min-height: 80vh;
+}
+
 
 

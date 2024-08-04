@@ -64,6 +64,7 @@
   height: 100rpx;
   border-bottom: 1px solid #eee;
   position: relative;
+  background: #fff;
 }
 .userLayout .section .list .row.data-v-0f7520f0:last-child {
   border-bottom: 0;

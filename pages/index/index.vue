@@ -1,5 +1,5 @@
 <template>
-	<view class="homeLayout">
+	<view class="homeLayout pageBg">
 		<!-- 轮播图 -->
 		<view class="banner">
 			<!-- circular 衔接滚动  

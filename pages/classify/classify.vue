@@ -1,5 +1,5 @@
 <template>
-	<view class="classLayout">
+	<view class="classLayout pageBg">
 		<view class="classify">
 			<theme-item v-for="item in 15"></theme-item>
 		</view>
