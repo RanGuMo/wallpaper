@@ -94,5 +94,5 @@
   left: 0;
   height: 100rpx;
   width: 100%;
-  opacity: 0.7;
+  opacity: 0;
 }

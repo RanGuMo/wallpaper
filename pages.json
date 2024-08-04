@@ -4,19 +4,29 @@
 			"path": "pages/index/index",
 			"style": {
 				// "navigationBarTitleText": ""
+        "navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/classify/classify",
 			"style": {
-				"navigationBarTitleText": "分类"
+				"navigationBarTitleText": "分类",
+        "navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/user/user",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationBarTitleText": "我的",
+        "navigationStyle": "custom"
 			}
+		},
+		{
+		  "path" : "pages/classslist/classslist",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "分类列表"
+		  }
 		}
 	],
 	"globalStyle": {

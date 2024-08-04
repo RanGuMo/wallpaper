@@ -22,7 +22,7 @@ const _sfc_main = {
       return common_vendor.e({
         a: !__props.isMore
       }, !__props.isMore ? {
-        b: common_assets._imports_0$1
+        b: common_assets._imports_0$2
       } : {}, {
         c: __props.isMore
       }, __props.isMore ? {
