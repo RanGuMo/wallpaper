@@ -12,7 +12,7 @@
       <view class="list">
         <view class="row">
           <view class="left">
-            <uni-icons type="download-filled" size="20" color="#28b389"></uni-icons>
+            <uni-icons type="download-filled" size="20"></uni-icons>
             <view class="text">我的下载</view>
           </view>
           <view class="right">
@@ -23,7 +23,7 @@
 
         <view class="row">
           <view class="left">
-            <uni-icons type="download-filled" size="20" color="#28b389"></uni-icons>
+            <uni-icons type="download-filled" size="20"></uni-icons>
             <view class="text">我的评分</view>
           </view>
           <view class="right">
@@ -34,7 +34,7 @@
 
         <view class="row">
           <view class="left">
-            <uni-icons type="download-filled" size="20" color="#28b389"></uni-icons>
+            <uni-icons type="download-filled" size="20"></uni-icons>
             <view class="text">联系客服</view>
           </view>
           <view class="right">
@@ -57,7 +57,7 @@
       <view class="list">
         <view class="row" v-for="itme in 2">
           <view class="left">
-            <uni-icons type="download-filled" size="20" color="#28b389"></uni-icons>
+            <uni-icons type="download-filled" size="20"></uni-icons>
             <view class="text">我的下载</view>
           </view>
           <view class="right">
@@ -133,6 +133,7 @@
           border-bottom: 1px solid #eee;
           position: relative;
           background: #fff;
+
           &:last-child {
             border-bottom: 0;
           }
@@ -140,6 +141,11 @@
           .left {
             display: flex;
             align-items: center;
+            :deep() {
+              .uni-icons {
+                color: $brand-theme-color !important;
+              }
+            }
 
             .text {
               padding-left: 20rpx;
