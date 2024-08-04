@@ -14,31 +14,42 @@ if (!Math) {
 const _sfc_main = {
   __name: "preview",
   setup(__props) {
+    const maskState = common_vendor.ref(true);
+    const maskChange = () => {
+      maskState.value = !maskState.value;
+    };
     return (_ctx, _cache) => {
-      return {
+      return common_vendor.e({
         a: common_vendor.f(5, (item, index, i0) => {
           return {
-            a: index
+            a: common_vendor.o(maskChange, index),
+            b: index
           };
         }),
         b: common_assets._imports_0$2,
-        c: common_vendor.p({
+        c: maskState.value
+      }, maskState.value ? {
+        d: common_vendor.p({
+          date: /* @__PURE__ */ new Date(),
+          format: "hh:mm"
+        }),
+        e: common_vendor.p({
           date: /* @__PURE__ */ new Date(),
           format: "MM月dd日"
         }),
-        d: common_vendor.p({
+        f: common_vendor.p({
           type: "info",
           size: "28"
         }),
-        e: common_vendor.p({
+        g: common_vendor.p({
           type: "star",
           size: "28"
         }),
-        f: common_vendor.p({
+        h: common_vendor.p({
           type: "download",
           size: "23"
         })
-      };
+      } : {});
     };
   }
 };

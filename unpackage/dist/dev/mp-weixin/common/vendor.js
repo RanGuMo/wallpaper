@@ -7656,6 +7656,7 @@ exports.f = f;
 exports.n = n;
 exports.o = o;
 exports.p = p;
+exports.ref = ref;
 exports.resolveComponent = resolveComponent;
 exports.s = s;
 exports.t = t;

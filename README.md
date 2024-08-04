@@ -644,3 +644,8 @@ static目录下的文件，在app第一次启动时，解压到了app的外部�
 </style>
 ```
 ![](README_files/7.jpg)
+
+
+## 3.preview 页面
+### 3.1. 遮罩层状态转换及日期格式化
+![](README_files/8.jpg)
