@@ -658,3 +658,43 @@ static目录下的文件，在app第一次启动时，解压到了app的外部�
 
 ### 3.4.自定义头部导航栏布局
 ![](README_files/11.jpg)
+
+### 3.5.获取系统信息getSystemInfo 状态栏高度 和 胶囊按钮高度（***）
+```js
+let SYSTEM_INFO = uni.getSystemInfoSync();
+console.log(SYSTEM_INFO,SYSTEM_INFO.statusBarHeight);
+```
+![](README_files/12.jpg)
+
+给状态栏的样式加上动态计算的状态栏高度
+
+![](README_files/13.jpg)
+
+
+
+接下来就该 考虑怎么让（标题和搜索框 ）和 胶囊按钮的高度 保持一致了
+
+![](README_files/14.jpg)
+
+胶囊高度怎么获取呢？ 
+
+`uni.getMenuButtonBoundingClientRect()` 即可获取
+
+```js
+let {top,height,bottom} = uni.getMenuButtonBoundingClientRect();
+console.log(uni.getMenuButtonBoundingClientRect());
+```
+![](README_files/15.jpg)
+
+![](README_files/16.jpg)
+
+计算方式如下：
+```js
+ let titleBarHeight = ref(height + (top-statusBarHeight.value)*2);
+```
+![](README_files/17.jpg)
+![](README_files/18.jpg)
+![](README_files/19.jpg)
+
+
+
