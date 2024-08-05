@@ -649,3 +649,6 @@ static目录下的文件，在app第一次启动时，解压到了app的外部�
 ## 3.preview 页面
 ### 3.1. 遮罩层状态转换及日期格式化
 ![](README_files/8.jpg)
+
+### 3.2.uni-popup弹窗层制作弹出信息内容效果
+![](README_files/9.jpg)
