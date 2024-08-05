@@ -652,3 +652,6 @@ static目录下的文件，在app第一次启动时，解压到了app的外部�
 
 ### 3.2.uni-popup弹窗层制作弹出信息内容效果
 ![](README_files/9.jpg)
+
+### 3.3.评分弹出框uni-rate组件的属性方法
+![](README_files/10.jpg)

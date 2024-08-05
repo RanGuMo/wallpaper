@@ -17,7 +17,7 @@
 					<uni-icons type="info" size="28"></uni-icons>
 					<view class="text">信息</view>
 				</view>
-				<view class="box">
+				<view class="box" @click="clickScore">
 					<uni-icons type="star" size="28"></uni-icons>
 					<view class="text">5分</view>
 				</view>
@@ -81,6 +81,28 @@
 			</view>
 		</uni-popup>
 
+		<!--:is-mask-click="false" 点遮罩层不能关闭 只能点击X 才能关闭 -->
+		<uni-popup ref="scorePopup" :is-mask-click="false">
+			<view class="scorePopup">
+				<view class="popHeader">
+					<view></view>
+					<view class="title">壁纸评分</view>
+					<view class="close" @click="clickScoreClose">
+						<uni-icons type="closeempty" size="18" color="#999"></uni-icons>
+					</view>
+				</view>
+
+				<view class="content">
+					<uni-rate v-model="userScore" allowHalf disabled-color="#FFCA3E" />
+					<text class="text">{{userScore}}分</text>
+				</view>
+
+				<view class="footer">
+					<button @click="submitScore" :disabled="!userScore" type="default" size="mini" plain>确认评分</button>
+				</view>
+			</view>
+		</uni-popup>
+
 	</view>
 </template>
 
@@ -104,6 +126,21 @@
 	//3.点击关闭信息弹窗
 	const clickInfoClose = () => {
 		infoPopup.value.close();
+	}
+
+	//4.评分弹窗
+	const userScore = ref(0)
+	const scorePopup = ref(null);
+	const clickScore = () => {
+		scorePopup.value.open();
+	}
+	//5.关闭评分框
+	const clickScoreClose = () => {
+		scorePopup.value.close();
+	}
+	// 6.确认评分 按钮点击事件
+	const submitScore = () => {
+
 	}
 </script>
 
@@ -187,28 +224,28 @@
 			}
 		}
 
+		// 公用样式
+		.popHeader {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			.title {
+				color: $text-font-color-2;
+				font-size: 26rpx;
+			}
+
+			.close {
+				padding: 6rpx;
+			}
+
+		}
 
 		.infoPopup {
 			background-color: #fff;
 			padding: 30rpx;
 			border-radius: 30rpx 30rpx 0 0;
 			overflow: hidden;
-
-			.popHeader {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-
-				.title {
-					color: $text-font-color-2;
-					font-size: 26rpx;
-				}
-
-				.close {
-					padding: 6rpx;
-				}
-
-			}
 
 			scroll-view {
 				max-height: 60vh;
@@ -277,5 +314,35 @@
 			}
 		}
 
+
+		.scorePopup {
+			background: #fff;
+			padding: 30rpx;
+			width: 70vw;
+			border-radius: 30rpx;
+
+			.content {
+				padding: 30rpx 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				.text {
+					color: #FFCA3E;
+					padding-left: 10rpx;
+					width: 80rpx;
+					line-height: 1em;
+					text-align: right;
+					font-size: 28rpx;
+				}
+			}
+
+			.footer {
+				padding: 10rpx 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		}
 	}
 </style>
