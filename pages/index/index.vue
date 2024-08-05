@@ -1,5 +1,6 @@
 <template>
   <view class="homeLayout pageBg">
+    <custom-nav-bar></custom-nav-bar>
     <!-- 轮播图 -->
     <view class="banner">
       <!-- circular 衔接滚动  
@@ -128,7 +129,7 @@
 
         :deep() {
           .uni-icons {
-            color: $brand-theme-color  !important;
+            color: $brand-theme-color !important;
           }
         }
 
@@ -177,7 +178,7 @@
 
         :deep() {
           .uni-icons {
-            color: $brand-theme-color  !important;
+            color: $brand-theme-color !important;
           }
         }
 

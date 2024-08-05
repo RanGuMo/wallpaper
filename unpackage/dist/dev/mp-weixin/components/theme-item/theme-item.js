@@ -22,7 +22,7 @@ const _sfc_main = {
       return common_vendor.e({
         a: !__props.isMore
       }, !__props.isMore ? {
-        b: common_assets._imports_0$4
+        b: common_assets._imports_0$3
       } : {}, {
         c: __props.isMore
       }, __props.isMore ? {
@@ -36,5 +36,5 @@ const _sfc_main = {
     };
   }
 };
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-f4eafbca"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-f4eafbca"], ["__file", "C:/Users/86182/Documents/HBuilderProjects/wallpaper/components/theme-item/theme-item.vue"]]);
 wx.createComponent(Component);

@@ -1,0 +1,61 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.layout .navbar.data-v-412fc155 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background: linear-gradient(to bottom, transparent, #fff 400rpx), linear-gradient(to right, #beecd8 20%, #F4E2D8);
+}
+.layout .navbar .titleBar.data-v-412fc155 {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+}
+.layout .navbar .titleBar .title.data-v-412fc155 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #000;
+}
+.layout .navbar .titleBar .search.data-v-412fc155 {
+  width: 220rpx;
+  height: 50rpx;
+  border-radius: 60rpx;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid #fff;
+  margin-left: 30rpx;
+  color: #999;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+}
+.layout .navbar .titleBar .search .icon.data-v-412fc155 {
+  margin-left: 5rpx;
+}
+.layout .navbar .titleBar .search .text.data-v-412fc155 {
+  padding-left: 10rpx;
+}

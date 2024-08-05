@@ -655,3 +655,6 @@ static目录下的文件，在app第一次启动时，解压到了app的外部�
 
 ### 3.3.评分弹出框uni-rate组件的属性方法
 ![](README_files/10.jpg)
+
+### 3.4.自定义头部导航栏布局
+![](README_files/11.jpg)
