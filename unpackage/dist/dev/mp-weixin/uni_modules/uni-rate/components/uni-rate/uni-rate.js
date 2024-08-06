@@ -215,8 +215,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.f($options.stars, (star, index, i0) => {
       return {
-        a: "55ba85bc-0-" + i0,
-        b: "55ba85bc-1-" + i0,
+        a: "4cb6f93c-0-" + i0,
+        b: "4cb6f93c-1-" + i0,
         c: star.activeWitch,
         d: index,
         e: common_vendor.o((...args) => $options.touchstart && $options.touchstart(...args), index),
@@ -240,5 +240,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     e: $options.marginNumber + "px"
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/86182/Documents/HBuilderProjects/wallpaper/uni_modules/uni-rate/components/uni-rate/uni-rate.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
 wx.createComponent(Component);

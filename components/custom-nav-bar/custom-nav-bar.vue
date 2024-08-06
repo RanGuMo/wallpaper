@@ -1,82 +1,90 @@
 <template>
-  <view class="layout">
-    <view class="navbar">
-      <view class="statusBar" :style="{height:statusBarHeight+'px'}"></view>
-      <view class="titleBar" :style="{height:titleBarHeight+'px'}">
-        <view class="title">标题</view>
-        <navigator url="/pages/search/search" class="search">
-          <uni-icons class="icon" type="search" color="#888" size="18"></uni-icons>
-          <text class="text">搜索</text>
-        </navigator>
-      </view>
-    </view>
-    <view class="fill" :style="{height:statusBarHeight+titleBarHeight+'px'}">
-    </view>
-  </view>
+	<view class="layout">
+		<view class="navbar">
+			<view class="statusBar" :style="{height:getStatusBarHeight()+'px'}"></view>
+			<view class="titleBar" :style="{height:getTitleBarHeight()+'px',marginLeft:getLeftIconLeft()+'px'}">
+				<view class="title">标题</view>
+				<navigator url="/pages/search/search" class="search">
+					<uni-icons class="icon" type="search" color="#888" size="18"></uni-icons>
+					<text class="text">搜索</text>
+				</navigator>
+			</view>
+		</view>
+		<view class="fill" :style="{height:getNavBarHeight()+'px'}">
+		</view>
+	</view>
 </template>
 <script setup>
-  import {ref} from 'vue';
-  let SYSTEM_INFO = uni.getSystemInfoSync();
-  console.log(SYSTEM_INFO, SYSTEM_INFO.statusBarHeight);
-  let statusBarHeight = ref(SYSTEM_INFO.statusBarHeight)
-  let {
-    top,
-    height,
-    bottom
-  } = uni.getMenuButtonBoundingClientRect();
-  console.log(uni.getMenuButtonBoundingClientRect());
-  let titleBarHeight = ref(height + (top - statusBarHeight.value) * 2);
+	import {
+		ref
+	} from 'vue';
+	import {
+		getStatusBarHeight,
+		getTitleBarHeight,
+		getNavBarHeight,
+		getLeftIconLeft
+	} from "@/utils/system.js"
+	// let SYSTEM_INFO = uni.getSystemInfoSync();
+	// console.log(SYSTEM_INFO, SYSTEM_INFO.statusBarHeight);
+	// let statusBarHeight = ref(SYSTEM_INFO.statusBarHeight)
+	// let {
+	// 	top,
+	// 	height,
+	// 	bottom
+	// } = uni.getMenuButtonBoundingClientRect();
+	// console.log(uni.getMenuButtonBoundingClientRect());
+	// let titleBarHeight = ref(height + (top - statusBarHeight.value) * 2);
 </script>
 
 <style lang="scss" scoped>
-  .layout {
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 10;
-      background:
-        linear-gradient(to bottom, transparent, #fff 400rpx),
-        linear-gradient(to right, #beecd8 20%, #F4E2D8);
+	.layout {
+		.navbar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 10;
+			background:
+				linear-gradient(to bottom, transparent, #fff 400rpx),
+				linear-gradient(to right, #beecd8 20%, #F4E2D8);
 
-      .statusBar {}
+			.statusBar {}
 
-      .titleBar {
-        display: flex;
-        align-items: center;
-        padding: 0 30rpx;
-        // border: 1px solid red;
+			.titleBar {
+				display: flex;
+				align-items: center;
+				padding: 0 30rpx;
+				// border: 1px solid red;
 
-        .title {
-          font-size: 22px;
-          font-weight: 700;
-          color: $text-font-color-1;
-        }
+				.title {
+					font-size: 22px;
+					font-weight: 700;
+					color: $text-font-color-1;
+				}
 
-        .search {
-          width: 220rpx;
-          height: 50rpx;
-          border-radius: 60rpx;
-          background: rgba(255, 255, 255, 0.4);
-          border: 1px solid #fff;
-          margin-left: 30rpx;
-          color: #999;
-          font-size: 28rpx;
-          display: flex;
-          align-items: center;
+				.search {
+					width: 220rpx;
+					height: 50rpx;
+					border-radius: 60rpx;
+					background: rgba(255, 255, 255, 0.4);
+					border: 1px solid #fff;
+					margin-left: 30rpx;
+					color: #999;
+					font-size: 28rpx;
+					display: flex;
+					align-items: center;
 
-          .icon {
-            margin-left: 5rpx;
-          }
+					.icon {
+						margin-left: 5rpx;
+					}
 
-          .text {
-            padding-left: 10rpx;
-          }
-        }
-      }
-    }
+					.text {
+						padding-left: 10rpx;
+					}
+				}
+			}
+		}
 
-    .fill {}
-  }
+		.fill {}
+	}
 </style>

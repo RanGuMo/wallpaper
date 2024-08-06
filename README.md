@@ -696,5 +696,128 @@ console.log(uni.getMenuButtonBoundingClientRect());
 ![](README_files/18.jpg)
 ![](README_files/19.jpg)
 
+### 3.6.抽离公共方法用条件编译以及对抖音小程序适配
+```js
+const SYSTEM_INFO = uni.getSystemInfoSync();
 
+// 获取状态栏的高度
+export const getStatusBarHeight = () => SYSTEM_INFO.statusBarHeight || 15;
+
+// 获取标题栏的高度，保证和胶囊按钮在同一水平线上
+export const getTitleBarHeight = () => {
+	if (uni.getMenuButtonBoundingClientRect) {
+		let {
+			top,
+			height
+		} = uni.getMenuButtonBoundingClientRect();
+		return height + (top - getStatusBarHeight()) * 2
+	} else {
+		return 40;
+	}
+}
+
+// 状态栏高度 + 标题栏高度
+export const getNavBarHeight = () => getStatusBarHeight() + getTitleBarHeight();
+
+// 抖音小程序左边图标的距离
+export const getLeftIconLeft = () => {
+	// #ifdef MP-TOUTIAO
+	let {
+		leftIcon: {
+			left,
+			width
+		}
+	} = tt.getCustomButtonBoundingClientRect();
+	return left + parseInt(width);
+	// #endif
+
+	// #ifndef MP-TOUTIAO
+	return 0
+	// #endif	
+}
+```
+
+`custom-nav-bar.vue`
+```vue
+<template>
+	<view class="layout">
+		<view class="navbar">
+			<view class="statusBar" :style="{height:getStatusBarHeight()+'px'}"></view>
+			<view class="titleBar" :style="{height:getTitleBarHeight()+'px',marginLeft:getLeftIconLeft()+'px'}">
+				<view class="title">标题</view>
+				<navigator url="/pages/search/search" class="search">
+					<uni-icons class="icon" type="search" color="#888" size="18"></uni-icons>
+					<text class="text">搜索</text>
+				</navigator>
+			</view>
+		</view>
+		<view class="fill" :style="{height:getNavBarHeight()+'px'}">
+		</view>
+	</view>
+</template>
+<script setup>
+	import {
+		ref
+	} from 'vue';
+	import {
+		getStatusBarHeight,
+		getTitleBarHeight,
+		getNavBarHeight,
+		getLeftIconLeft
+	} from "@/utils/system.js"
+</script>
+
+<style lang="scss" scoped>
+	.layout {
+		.navbar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 10;
+			background:
+				linear-gradient(to bottom, transparent, #fff 400rpx),
+				linear-gradient(to right, #beecd8 20%, #F4E2D8);
+
+			.statusBar {}
+
+			.titleBar {
+				display: flex;
+				align-items: center;
+				padding: 0 30rpx;
+				// border: 1px solid red;
+
+				.title {
+					font-size: 22px;
+					font-weight: 700;
+					color: $text-font-color-1;
+				}
+
+				.search {
+					width: 220rpx;
+					height: 50rpx;
+					border-radius: 60rpx;
+					background: rgba(255, 255, 255, 0.4);
+					border: 1px solid #fff;
+					margin-left: 30rpx;
+					color: #999;
+					font-size: 28rpx;
+					display: flex;
+					align-items: center;
+
+					.icon {
+						margin-left: 5rpx;
+					}
+
+					.text {
+						padding-left: 10rpx;
+					}
+				}
+			}
+		}
+
+		.fill {}
+	}
+</style>
+```
 
