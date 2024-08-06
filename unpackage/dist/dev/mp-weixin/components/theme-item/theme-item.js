@@ -22,11 +22,11 @@ const _sfc_main = {
       return common_vendor.e({
         a: !__props.isMore
       }, !__props.isMore ? {
-        b: common_assets._imports_0$4
+        b: common_assets._imports_0$3
       } : {}, {
         c: __props.isMore
       }, __props.isMore ? {
-        d: common_assets._imports_1$1,
+        d: common_assets._imports_1,
         e: common_vendor.p({
           type: "more-filled",
           size: "34",

@@ -9,7 +9,7 @@ const _sfc_main = {
         a: common_vendor.f(10, (item, k0, i0) => {
           return {};
         }),
-        b: common_assets._imports_0$2
+        b: common_assets._imports_0$1
       };
     };
   }

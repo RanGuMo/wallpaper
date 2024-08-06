@@ -11,8 +11,8 @@
 			-->
 			<swiper circular indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff"
 				autoplay :interval="3000" :duration="1000">
-				<swiper-item v-for="item in 3">
-					<image src="../../common/images/banner1.jpg" mode=""></image>
+				<swiper-item v-for="item in bannerList" :key="item._id">
+					<image :src="item.picurl" mode=""></image>
 				</swiper-item>
 
 			</swiper>
@@ -27,9 +27,9 @@
 			</view>
 			<view class="center">
 				<swiper vertical autoplay interval="1500" duration="300" circular>
-					<swiper-item v-for="item in 3">
+					<swiper-item v-for="item in noticeList" :key="item._id">
 						<navigator url="/pages/notice/detail">
-							内容内容内容内容内容内容内容内容内容内容内容
+							{{item.title}}
 						</navigator>
 					</swiper-item>
 				</swiper>
@@ -56,8 +56,8 @@
 			<!-- scroll-x 可在x轴滑动   -->
 			<view class="content">
 				<scroll-view scroll-x>
-					<view class="box" v-for="item in 8" @click="goPreview()">
-						<image src="../../common/images/preview_small.webp" mode="aspectFill"></image>
+					<view class="box" v-for="item in randomList" :key="item._id" @click="goPreview()">
+						<image :src="item.smallPicurl" mode="aspectFill"></image>
 					</view>
 				</scroll-view>
 			</view>
@@ -87,6 +87,54 @@
 </template>
 
 <script setup>
+	import {
+		ref
+	} from 'vue'
+	const bannerList = ref([]);
+	const randomList = ref([]);
+	const noticeList = ref([]);
+
+
+	const getBannerList = async () => {
+		let res = await uni.request({
+			url: 'https://tea.qingnian8.com/api/bizhi/homeBanner',
+			header: {
+				"access-key": "weifu123"
+			}
+		})
+		if (res.data.errCode === 0) {
+			bannerList.value = res.data.data;
+		}
+	}
+	const getDayRamdomList = async () => {
+		let res = await uni.request({
+			url: 'https://tea.qingnian8.com/api/bizhi/randomWall',
+			header: {
+				"access-key": "weifu123"
+			}
+		})
+		if (res.data.errCode === 0) {
+			randomList.value = res.data.data;
+		}
+	}
+
+	const getNoticeList = async () => {
+		let res = await uni.request({
+			url: 'https://tea.qingnian8.com/api/bizhi/wallNewsList',
+			header: {
+				"access-key": "weifu123"
+			},
+			data: {
+				select: true
+			}
+		})
+		if (res.data.errCode === 0) {
+			noticeList.value = res.data.data;
+		}
+	}
+	getBannerList();
+	getDayRamdomList();
+	getNoticeList();
 	//跳转到预览页面
 	const goPreview = () => {
 		uni.navigateTo({
