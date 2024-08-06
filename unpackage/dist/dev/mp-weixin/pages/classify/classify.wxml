@@ -1,1 +1,1 @@
-<view class="classLayout pageBg data-v-6bcfa975"><view class="classify data-v-6bcfa975"><theme-item wx:for="{{a}}" wx:for-item="item" class="data-v-6bcfa975" u-i="{{item.a}}" bind:__l="__l"></theme-item></view></view>
+<view class="classLayout pageBg data-v-6bcfa975"><custom-nav-bar wx:if="{{a}}" class="data-v-6bcfa975" u-i="6bcfa975-0" bind:__l="__l" u-p="{{a}}"></custom-nav-bar><view class="classify data-v-6bcfa975"><theme-item wx:for="{{b}}" wx:for-item="item" class="data-v-6bcfa975" u-i="{{item.a}}" bind:__l="__l"></theme-item></view></view>

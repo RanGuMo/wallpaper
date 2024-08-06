@@ -8,7 +8,11 @@
 
 
 		<view class="mask" v-if="maskState">
-			<view class="goBack"></view>
+			<!-- #ifndef MP-TOUTIAO -->
+			<view class="goBack" @click="goBack" :style="{top:getStatusBarHeight()+'px'}">
+				<uni-icons type="back" color="#fff" size="20"></uni-icons>
+			</view>
+			<!-- #endif -->
 			<view class="count">3 / 9</view>
 			<view class="time"><uni-dateformat :date="new Date()" format="hh:mm"></uni-dateformat></view>
 			<view class="date"><uni-dateformat :date="new Date()" format="MM月dd日"></uni-dateformat></view>
@@ -110,6 +114,9 @@
 	import {
 		ref
 	} from 'vue';
+	import {
+		getStatusBarHeight
+	} from "@/utils/system.js"
 
 	const maskState = ref(true);
 
@@ -142,6 +149,10 @@
 	const submitScore = () => {
 
 	}
+	// 7.返回上一层
+	const goBack = () => {
+		uni.navigateBack();
+	}
 </script>
 
 <style lang="scss" scoped>
@@ -171,7 +182,20 @@
 				width: fit-content;
 			}
 
-			.goBack {}
+			.goBack {
+				width: 38px;
+				height: 38px;
+				background: rgba(0, 0, 0, 0.5);
+				left: 30rpx;
+				margin-left: 0;
+				border-radius: 100px;
+				top: 0;
+				backdrop-filter: blur(10rpx);
+				border: 1rpx solid rgba(255, 255, 255, 0.3);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
 
 			.count {
 				top: 10vh;

@@ -3,7 +3,7 @@
 		<view class="navbar">
 			<view class="statusBar" :style="{height:getStatusBarHeight()+'px'}"></view>
 			<view class="titleBar" :style="{height:getTitleBarHeight()+'px',marginLeft:getLeftIconLeft()+'px'}">
-				<view class="title">标题</view>
+				<view class="title">{{title}}</view>
 				<navigator url="/pages/search/search" class="search">
 					<uni-icons class="icon" type="search" color="#888" size="18"></uni-icons>
 					<text class="text">搜索</text>
@@ -24,6 +24,13 @@
 		getNavBarHeight,
 		getLeftIconLeft
 	} from "@/utils/system.js"
+
+	defineProps({
+		title: {
+			type: String,
+			default: "壁纸"
+		}
+	})
 	// let SYSTEM_INFO = uni.getSystemInfoSync();
 	// console.log(SYSTEM_INFO, SYSTEM_INFO.statusBarHeight);
 	// let statusBarHeight = ref(SYSTEM_INFO.statusBarHeight)

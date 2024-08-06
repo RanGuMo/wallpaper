@@ -1,1 +1,1 @@
-<view class="classlist data-v-5015b211"><view class="content data-v-5015b211"><navigator wx:for="{{a}}" wx:for-item="item" url="" class="item data-v-5015b211"><image class="data-v-5015b211" src="{{b}}" mode="aspectFill"></image></navigator></view></view>
+<view class="classlist data-v-5015b211"><view class="content data-v-5015b211"><navigator wx:for="{{a}}" wx:for-item="item" url="/pages/preview/preview" class="item data-v-5015b211"><image class="data-v-5015b211" src="{{b}}" mode="aspectFill"></image></navigator></view></view>
