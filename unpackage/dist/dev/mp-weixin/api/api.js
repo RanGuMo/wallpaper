@@ -14,6 +14,13 @@ function apiGetNotice(data = {}) {
     data
   });
 }
+function apiGetClassify(data = {}) {
+  return utils_request.request({
+    url: "/classify",
+    data
+  });
+}
 exports.apiGetBanner = apiGetBanner;
+exports.apiGetClassify = apiGetClassify;
 exports.apiGetDayRandom = apiGetDayRandom;
 exports.apiGetNotice = apiGetNotice;

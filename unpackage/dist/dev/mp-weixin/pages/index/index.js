@@ -23,6 +23,7 @@ const _sfc_main = {
     const bannerList = common_vendor.ref([]);
     const randomList = common_vendor.ref([]);
     const noticeList = common_vendor.ref([]);
+    const classifyList = common_vendor.ref([]);
     const getBannerList = async () => {
       let res = await api_api.apiGetBanner();
       bannerList.value = res.data;
@@ -35,9 +36,16 @@ const _sfc_main = {
       let res = await api_api.apiGetNotice({ select: true });
       noticeList.value = res.data;
     };
+    const getClassify = async () => {
+      let res = await api_api.apiGetClassify({
+        select: true
+      });
+      classifyList.value = res.data;
+    };
     getBannerList();
     getDayRamdomList();
     getNoticeList();
+    getClassify();
     const goPreview = () => {
       common_vendor.index.navigateTo({
         url: "/pages/preview/preview"
@@ -84,9 +92,13 @@ const _sfc_main = {
             c: common_vendor.o(($event) => goPreview(), item._id)
           };
         }),
-        i: common_vendor.f(8, (item, k0, i0) => {
+        i: common_vendor.f(classifyList.value, (item, k0, i0) => {
           return {
-            a: "1cf27b2a-7-" + i0
+            a: item._id,
+            b: "1cf27b2a-7-" + i0,
+            c: common_vendor.p({
+              item
+            })
           };
         }),
         j: common_vendor.p({

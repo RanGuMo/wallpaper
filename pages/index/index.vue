@@ -74,7 +74,7 @@
       </common-title>
 
       <view class="content">
-        <theme-item v-for="item in 8"></theme-item>
+        <theme-item v-for="item in classifyList" :key="item._id" :item="item"></theme-item>
         <theme-item :isMore="true"></theme-item>
 
       </view>
@@ -93,10 +93,12 @@
   const bannerList = ref([]);
   const randomList = ref([]);
   const noticeList = ref([]);
+  const classifyList = ref([]);
   import {
     apiGetBanner,
     apiGetDayRandom,
-    apiGetNotice
+    apiGetNotice,
+    apiGetClassify
   } from '@/api/api.js'
 
   const getBannerList = async () => {
@@ -112,9 +114,17 @@
     let res = await apiGetNotice({select: true});
     noticeList.value = res.data;
   }
+  
+  const getClassify = async ()=>{
+  	let res =await apiGetClassify({
+  		select:true
+  	});
+  	classifyList.value = res.data
+  }
   getBannerList();
   getDayRamdomList();
   getNoticeList();
+  getClassify();
   //跳转到预览页面
   const goPreview = () => {
     uni.navigateTo({
