@@ -51,7 +51,7 @@ const _sfc_main = {
             b: index
           };
         }),
-        b: common_assets._imports_0$2,
+        b: common_assets._imports_0$1,
         c: maskState.value
       }, maskState.value ? {
         d: common_vendor.p({
@@ -130,5 +130,5 @@ const _sfc_main = {
     };
   }
 };
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-2dad6c07"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-2dad6c07"], ["__file", "C:/Users/86182/Documents/HBuilderProjects/wallpaper/pages/preview/preview.vue"]]);
 wx.createPage(MiniProgramPage);

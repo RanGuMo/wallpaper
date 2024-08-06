@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const api_api = require("../../api/api.js");
 if (!Array) {
   const _easycom_custom_nav_bar2 = common_vendor.resolveComponent("custom-nav-bar");
   const _easycom_uni_icons2 = common_vendor.resolveComponent("uni-icons");
@@ -23,40 +24,16 @@ const _sfc_main = {
     const randomList = common_vendor.ref([]);
     const noticeList = common_vendor.ref([]);
     const getBannerList = async () => {
-      let res = await common_vendor.index.request({
-        url: "https://tea.qingnian8.com/api/bizhi/homeBanner",
-        header: {
-          "access-key": "weifu123"
-        }
-      });
-      if (res.data.errCode === 0) {
-        bannerList.value = res.data.data;
-      }
+      let res = await api_api.apiGetBanner();
+      bannerList.value = res.data;
     };
     const getDayRamdomList = async () => {
-      let res = await common_vendor.index.request({
-        url: "https://tea.qingnian8.com/api/bizhi/randomWall",
-        header: {
-          "access-key": "weifu123"
-        }
-      });
-      if (res.data.errCode === 0) {
-        randomList.value = res.data.data;
-      }
+      let res = await api_api.apiGetDayRandom();
+      randomList.value = res.data;
     };
     const getNoticeList = async () => {
-      let res = await common_vendor.index.request({
-        url: "https://tea.qingnian8.com/api/bizhi/wallNewsList",
-        header: {
-          "access-key": "weifu123"
-        },
-        data: {
-          select: true
-        }
-      });
-      if (res.data.errCode === 0) {
-        noticeList.value = res.data.data;
-      }
+      let res = await api_api.apiGetNotice({ select: true });
+      noticeList.value = res.data;
     };
     getBannerList();
     getDayRamdomList();
@@ -119,5 +96,5 @@ const _sfc_main = {
     };
   }
 };
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-1cf27b2a"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-1cf27b2a"], ["__file", "C:/Users/86182/Documents/HBuilderProjects/wallpaper/pages/index/index.vue"]]);
 wx.createPage(MiniProgramPage);

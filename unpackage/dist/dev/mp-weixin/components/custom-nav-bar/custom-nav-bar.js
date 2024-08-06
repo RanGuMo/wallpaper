@@ -34,5 +34,5 @@ const _sfc_main = {
     };
   }
 };
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-412fc155"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-412fc155"], ["__file", "C:/Users/86182/Documents/HBuilderProjects/wallpaper/components/custom-nav-bar/custom-nav-bar.vue"]]);
 wx.createComponent(Component);
