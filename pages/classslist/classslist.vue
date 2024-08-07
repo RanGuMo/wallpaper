@@ -1,8 +1,8 @@
 <template>
 	<view class="classlist">
 		<view class="content">
-			<navigator url="/pages/preview/preview" class="item" v-for="item in 10">
-				<image src="../../common/images/preview2.jpg" mode="aspectFill"></image>
+			<navigator url="/pages/preview/preview" class="item" v-for="item in classList" :key="item._id">
+				<image :src="item.smallPicurl" mode="aspectFill"></image>
 			</navigator>
 		</view>
 	</view>
@@ -12,6 +12,34 @@
 	import {
 		ref
 	} from "vue";
+	import {
+		onLoad
+	} from '@dcloudio/uni-app'
+
+	import {
+		apiGetClassList
+	} from "@/api/api.js"
+	//分类列表数据
+	const classList = ref([]);
+
+	//获取分类列表网络数据
+	const getClassList = async () => {
+		let res = await apiGetClassList(queryParams);
+		classList.value = res.data;
+	}
+	let queryParams = {}
+	onLoad((e) => {
+		let {
+			id = null, name = null
+		} = e;
+		if (id) queryParams.classid = id;
+		//修改导航标题
+		uni.setNavigationBarTitle({
+			title: name
+		})
+		//执行获取分类列表方法
+		getClassList();
+	})
 </script>
 
 <style lang="scss" scoped>

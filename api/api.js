@@ -1,25 +1,36 @@
-import {request} from "@/utils/request.js"
+import {
+	request
+} from "@/utils/request.js"
 
-export function apiGetBanner(){
+export function apiGetBanner() {
 	return request({
-		url:"/homeBanner"		
-	})	
+		url: "/homeBanner"
+	})
 }
 
-export function apiGetDayRandom(){
-	return request({url:"/randomWall"})
+export function apiGetDayRandom() {
+	return request({
+		url: "/randomWall"
+	})
 }
 
-export function apiGetNotice(data={}){
+export function apiGetNotice(data = {}) {
 	return request({
-		url:"/wallNewsList",
+		url: "/wallNewsList",
 		data
 	})
 }
 
-export function apiGetClassify(data={}){
+export function apiGetClassify(data = {}) {
 	return request({
-		url:"/classify",
+		url: "/classify",
+		data
+	})
+}
+
+export function apiGetClassList(data = {}) {
+	return request({
+		url: "/wallList",
 		data
 	})
 }
