@@ -13,7 +13,8 @@
 		ref
 	} from "vue";
 	import {
-		onLoad
+		onLoad,
+		onReachBottom
 	} from '@dcloudio/uni-app'
 
 	import {
@@ -21,23 +22,40 @@
 	} from "@/api/api.js"
 	//分类列表数据
 	const classList = ref([]);
+	// 2.触底加载更多 的时候是否继续发送请求
+	const noData = ref(false);
 
-	//获取分类列表网络数据
+	//定义data参数
+	const queryParams = {
+		pageNum: 1,
+		pageSize: 12
+	}
+
+	//1.获取分类列表网络数据
 	const getClassList = async () => {
 		let res = await apiGetClassList(queryParams);
-		classList.value = res.data;
+		//2.2.拼接触底加载的数据
+		classList.value = [...classList.value, ...res.data];
+		//2.3. 如果获取到的数据小于pageSize，说明已经是最后一页了
+		if (queryParams.pageSize > res.data.length) noData.value = true;
 	}
-	let queryParams = {}
+
 	onLoad((e) => {
 		let {
 			id = null, name = null
 		} = e;
 		if (id) queryParams.classid = id;
-		//修改导航标题
+		//1.1.修改导航标题
 		uni.setNavigationBarTitle({
 			title: name
 		})
-		//执行获取分类列表方法
+		//1.2.执行获取分类列表方法
+		getClassList();
+	})
+	// 2.1.触底加载更多
+	onReachBottom(() => {
+		if (noData.value) return; //如果没有数据就不发请求获取下一页的数据了
+		queryParams.pageNum++;
 		getClassList();
 	})
 </script>
