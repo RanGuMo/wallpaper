@@ -45,34 +45,34 @@
 					<view class="content">
 						<view class="row">
 							<view class="label">壁纸ID：</view>
-							<text selectable user-select class="value class">45427522</text>
+							<text selectable user-select class="value class">{{currentInfo._id}}</text>
 						</view>
-						<view class="row">
+						<!-- <view class="row">
 							<view class="label">分类：</view>
 							<text selectable user-select class="value class">明星美女</text>
-						</view>
+						</view> -->
 						<view class="row">
 							<view class="label">发布者：</view>
-							<text selectable user-select class="value">咸虾米</text>
+							<text selectable user-select class="value">{{currentInfo.nickname}}</text>
 						</view>
 						<view class="row">
 							<view class="label">评分：</view>
 
 							<view class="value roteBox">
-								<uni-rate readonly touchable value="3.5" size="16" />
-								<text class="score">5分</text>
+								<uni-rate readonly touchable :value="currentInfo.score" size="16" />
+								<text class="score">{{currentInfo.score}}分</text>
 							</view>
 						</view>
 
 						<view class="row">
 							<view class="label">摘要：</view>
-							<text selectable user-select class="value">担惊受恐大健康老实交代分</text>
+							<text selectable user-select class="value">{{currentInfo.description}}</text>
 						</view>
 						<view class="row">
 							<view class="label">标签：</view>
 							<view class="value tabs">
-								<view class="tab" v-for="item in 3">
-									标签名
+								<view class="tab" v-for="tab in currentInfo.tabs">
+									{{tab}}
 								</view>
 							</view>
 						</view>
@@ -125,9 +125,11 @@
 	// 0.1.获取索引
 	const currentId = ref(null); //当前id
 	const currentIndex = ref(0); //当前索引
+	const currentInfo = ref(null); //0.4.当前图片信息
 	onLoad((e) => {
 		currentId.value = e.id;
 		currentIndex.value = classList.value.findIndex(item => item._id == currentId.value)
+		currentInfo.value = classList.value[currentIndex.value] //0.4
 		readImgsFun();
 		// console.log(currentIndex.value);
 	})
@@ -135,6 +137,7 @@
 	const swiperChange = (e) => {
 		// console.log(e);
 		currentIndex.value = e.detail.current;
+		currentInfo.value = classList.value[currentIndex.value] //0.4
 		readImgsFun();
 	}
 	//0.3.巧妙解决首次加载额外的图片网络消耗（点击预览只显示当前图片和上一张图片和下一张图片）
