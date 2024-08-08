@@ -1,6 +1,7 @@
 <template>
 	<view class="preview">
-		<swiper circular>
+		<!--current 当前所在滑块的 index -->
+		<swiper circular :current="currentIndex" @change="swiperChange">
 			<swiper-item v-for="(item,index) in classList" :key="item._id">
 				<image @click="maskChange" :src="item.picurl" mode="aspectFill"></image>
 			</swiper-item>
@@ -13,7 +14,7 @@
 				<uni-icons type="back" color="#fff" size="20"></uni-icons>
 			</view>
 			<!-- #endif -->
-			<view class="count">3 / {{classList.length}}</view>
+			<view class="count">{{currentIndex+1}} / {{classList.length}}</view>
 			<view class="time"><uni-dateformat :date="new Date()" format="hh:mm"></uni-dateformat></view>
 			<view class="date"><uni-dateformat :date="new Date()" format="MM月dd日"></uni-dateformat></view>
 			<view class="footer">
@@ -117,7 +118,27 @@
 	import {
 		getStatusBarHeight
 	} from "@/utils/system.js"
+	import {
+		onLoad
+	} from '@dcloudio/uni-app'
 
+	// 0.1.获取索引
+	const currentId = ref(null); //当前id
+	const currentIndex = ref(0); //当前索引
+	onLoad((e) => {
+		currentId.value = e.id;
+		currentIndex.value = classList.value.findIndex(item => item._id == currentId.value)
+		console.log(currentIndex.value);
+	})
+	// 0.2.swiper切换改变索引
+	const swiperChange = (e) => {
+		// console.log(e);
+		currentIndex.value = e.detail.current;
+	}
+
+
+
+	//0.获取storage 里面的数据进行预览
 	const classList = ref([]);
 	const storageClassList = uni.getStorageSync("storageClassList") || [];
 	classList.value = storageClassList.map(item => {
