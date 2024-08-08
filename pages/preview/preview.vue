@@ -1,8 +1,8 @@
 <template>
 	<view class="preview">
 		<swiper circular>
-			<swiper-item v-for="(item,index) in 5" :key="index">
-				<image @click="maskChange" src="../../common/images/preview1.jpg" mode="aspectFill"></image>
+			<swiper-item v-for="(item,index) in classList" :key="item._id">
+				<image @click="maskChange" :src="item.picurl" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
 
@@ -13,7 +13,7 @@
 				<uni-icons type="back" color="#fff" size="20"></uni-icons>
 			</view>
 			<!-- #endif -->
-			<view class="count">3 / 9</view>
+			<view class="count">3 / {{classList.length}}</view>
 			<view class="time"><uni-dateformat :date="new Date()" format="hh:mm"></uni-dateformat></view>
 			<view class="date"><uni-dateformat :date="new Date()" format="MM月dd日"></uni-dateformat></view>
 			<view class="footer">
@@ -117,6 +117,17 @@
 	import {
 		getStatusBarHeight
 	} from "@/utils/system.js"
+
+	const classList = ref([]);
+	const storageClassList = uni.getStorageSync("storageClassList") || [];
+	classList.value = storageClassList.map(item => {
+		return {
+			...item,
+			picurl: item.smallPicurl.replace("_small.webp", ".jpg") //替换成大图
+		}
+	})
+
+
 
 	const maskState = ref(true);
 

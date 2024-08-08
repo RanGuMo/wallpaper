@@ -50,6 +50,7 @@
 		classList.value = [...classList.value, ...res.data];
 		//2.3. 如果获取到的数据小于pageSize，说明已经是最后一页了
 		if (queryParams.pageSize > res.data.length) noData.value = true;
+		uni.setStorageSync("storageClassList", classList.value);
 	}
 
 	onLoad((e) => {
