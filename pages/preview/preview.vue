@@ -3,7 +3,7 @@
 		<!--current 当前所在滑块的 index -->
 		<swiper circular :current="currentIndex" @change="swiperChange">
 			<swiper-item v-for="(item,index) in classList" :key="item._id">
-				<image @click="maskChange" :src="item.picurl" mode="aspectFill"></image>
+				<image v-if="readImgs.includes(index)" @click="maskChange" :src="item.picurl" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
 
@@ -128,12 +128,36 @@
 	onLoad((e) => {
 		currentId.value = e.id;
 		currentIndex.value = classList.value.findIndex(item => item._id == currentId.value)
-		console.log(currentIndex.value);
+		readImgsFun();
+		// console.log(currentIndex.value);
 	})
 	// 0.2.swiper切换改变索引
 	const swiperChange = (e) => {
 		// console.log(e);
 		currentIndex.value = e.detail.current;
+		readImgsFun();
+	}
+	//0.3.巧妙解决首次加载额外的图片网络消耗（点击预览只显示当前图片和上一张图片和下一张图片）
+	const readImgs = ref([]);
+
+	function readImgsFun() {
+		readImgs.value.push(
+			currentIndex.value <= 0 ? classList.value.length - 1 : currentIndex.value - 1,
+			currentIndex.value,
+			currentIndex.value >= classList.value.length - 1 ? 0 : currentIndex.value + 1
+		)
+		readImgs.value = [...new Set(readImgs.value)]; //用set集合去重
+
+		// const {
+		// 	length
+		// } = classList.value;
+		// readImgs.value = [
+		// 	...new Set([
+		// 		(currentIndex.value - 1 + length) % length, // 上一个元素的索引
+		// 		currentIndex.value, // 当前元素的索引
+		// 		(currentIndex.value + 1) % length, // 下一个元素的索引
+		// 	]),
+		// ];
 	}
 
 
