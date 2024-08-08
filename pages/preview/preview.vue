@@ -24,7 +24,7 @@
 				</view>
 				<view class="box" @click="clickScore">
 					<uni-icons type="star" size="28"></uni-icons>
-					<view class="text">5分</view>
+					<view class="text">{{currentInfo.score}}分</view>
 				</view>
 				<view class="box">
 					<uni-icons type="download" size="23"></uni-icons>
@@ -122,6 +122,10 @@
 		onLoad
 	} from '@dcloudio/uni-app'
 
+	import {
+		apiGetSetupScore
+	} from '@/api/api.js'
+
 	// 0.1.获取索引
 	const currentId = ref(null); //当前id
 	const currentIndex = ref(0); //当前索引
@@ -203,10 +207,20 @@
 	//5.关闭评分框
 	const clickScoreClose = () => {
 		scorePopup.value.close();
+		userScore.value = 0;
 	}
 	// 6.确认评分 按钮点击事件
-	const submitScore = () => {
-
+	const submitScore = async () => {
+		let {
+			classid,
+			_id: wallId
+		} = currentInfo.value;
+		let res = await apiGetSetupScore({
+			classid,
+			wallId,
+			userScore: userScore.value
+		})
+		clickScoreClose();
 	}
 	// 7.返回上一层
 	const goBack = () => {
