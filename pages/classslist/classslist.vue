@@ -1,10 +1,22 @@
 <template>
 	<view class="classlist">
+
+		<view class="loadingLayout" v-if="!classList.length && !noData">
+			<uni-load-more status="loading"></uni-load-more>
+		</view>
+
 		<view class="content">
 			<navigator url="/pages/preview/preview" class="item" v-for="item in classList" :key="item._id">
 				<image :src="item.smallPicurl" mode="aspectFill"></image>
 			</navigator>
 		</view>
+
+
+		<view class="loadingLayout" v-if="classList.length || noData">
+			<uni-load-more :status="noData?'noMore':'loading'"></uni-load-more>
+		</view>
+
+		<view class="safe-area-inset-bottom"></view>
 	</view>
 </template>
 

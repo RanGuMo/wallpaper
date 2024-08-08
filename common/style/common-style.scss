@@ -10,5 +10,15 @@ view,swiper,swiper-item{
 	min-height: 80vh;
 }
 
+// loading的布局
+.loadingLayout{
+	padding:30rpx 0;
+}
+
+// 安全区域的高度
+.safe-area-inset-bottom{
+	height: env(safe-area-inset-bottom);
+}
+
 
 
