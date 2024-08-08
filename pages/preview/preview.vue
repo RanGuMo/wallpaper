@@ -91,19 +91,20 @@
 			<view class="scorePopup">
 				<view class="popHeader">
 					<view></view>
-					<view class="title">壁纸评分</view>
+					<view class="title">{{isScore?'已经评分了~':'壁纸评分'}}</view>
 					<view class="close" @click="clickScoreClose">
 						<uni-icons type="closeempty" size="18" color="#999"></uni-icons>
 					</view>
 				</view>
 
 				<view class="content">
-					<uni-rate v-model="userScore" allowHalf disabled-color="#FFCA3E" />
+					<uni-rate v-model="userScore" allowHalf :disabled="isScore" disabled-color="#FFCA3E" />
 					<text class="text">{{userScore}}分</text>
 				</view>
 
 				<view class="footer">
-					<button @click="submitScore" :disabled="!userScore" type="default" size="mini" plain>确认评分</button>
+					<button @click="submitScore" :disabled="!userScore || isScore" type="default" size="mini"
+						plain>确认评分</button>
 				</view>
 			</view>
 		</uni-popup>
@@ -202,25 +203,48 @@
 	const userScore = ref(0)
 	const scorePopup = ref(null);
 	const clickScore = () => {
+		if (currentInfo.value.userScore) {
+			isScore.value = true;
+			userScore.value = currentInfo.value.userScore;
+		}
 		scorePopup.value.open();
 	}
 	//5.关闭评分框
 	const clickScoreClose = () => {
 		scorePopup.value.close();
 		userScore.value = 0;
+		isScore.value = false;
 	}
 	// 6.确认评分 按钮点击事件
+	const isScore = ref(false); //是否已经评分
 	const submitScore = async () => {
+		// 6.1.显示加载
+		uni.showLoading({
+			title: "加载中..."
+		})
+		//解构数据
 		let {
 			classid,
 			_id: wallId
 		} = currentInfo.value;
+		//发起评分请求
 		let res = await apiGetSetupScore({
 			classid,
 			wallId,
 			userScore: userScore.value
 		})
-		clickScoreClose();
+		//关闭加载
+		uni.hideLoading();
+		if (res.errCode === 0) {
+			uni.showToast({
+				title: "评分成功",
+				icon: "none"
+			})
+			// 通过本地缓存修改已评分过的状态
+			classList.value[currentIndex.value].userScore = userScore.value;
+			uni.setStorageSync("storgClassList", classList.value);
+			clickScoreClose();
+		}
 	}
 	// 7.返回上一层
 	const goBack = () => {
