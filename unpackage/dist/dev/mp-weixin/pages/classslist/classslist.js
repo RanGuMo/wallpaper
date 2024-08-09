@@ -18,6 +18,7 @@ const _sfc_main = {
       pageNum: 1,
       pageSize: 12
     };
+    let pageName;
     const getClassList = async () => {
       let res = await api_api.apiGetClassList(queryParams);
       classList.value = [...classList.value, ...res.data];
@@ -32,6 +33,7 @@ const _sfc_main = {
       } = e;
       if (id)
         queryParams.classid = id;
+      pageName = name;
       common_vendor.index.setNavigationBarTitle({
         title: name
       });
@@ -42,6 +44,18 @@ const _sfc_main = {
         return;
       queryParams.pageNum++;
       getClassList();
+    });
+    common_vendor.onShareAppMessage((e) => {
+      return {
+        title: "咸虾米壁纸-" + pageName,
+        path: "/pages/classslist/classslist?id=" + queryParams.classid + "&name=" + pageName
+      };
+    });
+    common_vendor.onShareTimeline(() => {
+      return {
+        title: "咸虾米壁纸-" + pageName,
+        query: "id=" + queryParams.classid + "&name=" + pageName
+      };
     });
     return (_ctx, _cache) => {
       return common_vendor.e({
@@ -68,4 +82,5 @@ const _sfc_main = {
   }
 };
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-5015b211"]]);
+_sfc_main.__runtimeHooks = 6;
 wx.createPage(MiniProgramPage);

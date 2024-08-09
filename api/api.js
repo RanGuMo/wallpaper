@@ -50,3 +50,11 @@ export function apiWriteDownload(data = {}) {
 		data
 	})
 }
+
+// 查看单张壁纸详情
+export function apiDetailWall(data = {}) {
+	return request({
+		url: "/detailWall",
+		data
+	})
+}

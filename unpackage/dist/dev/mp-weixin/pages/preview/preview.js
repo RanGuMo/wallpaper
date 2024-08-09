@@ -22,8 +22,19 @@ const _sfc_main = {
     const currentId = common_vendor.ref(null);
     const currentIndex = common_vendor.ref(0);
     const currentInfo = common_vendor.ref(null);
-    common_vendor.onLoad((e) => {
+    common_vendor.onLoad(async (e) => {
       currentId.value = e.id;
+      if (e.type == "share") {
+        let res = await api_api.apiDetailWall({
+          id: currentId.value
+        });
+        classList.value = res.data.map((item) => {
+          return {
+            ...item,
+            picurl: item.smallPicurl.replace("_small.webp", ".jpg")
+          };
+        });
+      }
       currentIndex.value = classList.value.findIndex((item) => item._id == currentId.value);
       currentInfo.value = classList.value[currentIndex.value];
       readImgsFun();
@@ -177,6 +188,18 @@ const _sfc_main = {
         common_vendor.index.hideLoading();
       }
     };
+    common_vendor.onShareAppMessage((e) => {
+      return {
+        title: "咸虾米壁纸",
+        path: "/pages/preview/preview?id=" + currentId.value + "&type=share"
+      };
+    });
+    common_vendor.onShareTimeline(() => {
+      return {
+        title: "咸虾米壁纸",
+        query: "id=" + currentId.value + "&type=share"
+      };
+    });
     return (_ctx, _cache) => {
       return common_vendor.e({
         a: currentInfo.value
@@ -284,4 +307,5 @@ const _sfc_main = {
   }
 };
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-2dad6c07"]]);
+_sfc_main.__runtimeHooks = 6;
 wx.createPage(MiniProgramPage);

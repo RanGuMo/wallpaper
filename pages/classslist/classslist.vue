@@ -27,7 +27,9 @@
 	} from "vue";
 	import {
 		onLoad,
-		onReachBottom
+		onReachBottom,
+		onShareAppMessage,
+		onShareTimeline
 	} from '@dcloudio/uni-app'
 
 	import {
@@ -43,7 +45,7 @@
 		pageNum: 1,
 		pageSize: 12
 	}
-
+	let pageName;
 	//1.获取分类列表网络数据
 	const getClassList = async () => {
 		let res = await apiGetClassList(queryParams);
@@ -59,6 +61,7 @@
 			id = null, name = null
 		} = e;
 		if (id) queryParams.classid = id;
+		pageName = name;
 		//1.1.修改导航标题
 		uni.setNavigationBarTitle({
 			title: name
@@ -71,6 +74,24 @@
 		if (noData.value) return; //如果没有数据就不发请求获取下一页的数据了
 		queryParams.pageNum++;
 		getClassList();
+	})
+
+
+	//分享给好友
+	onShareAppMessage((e) => {
+		return {
+			title: "咸虾米壁纸-" + pageName,
+			path: "/pages/classslist/classslist?id=" + queryParams.classid + "&name=" + pageName
+		}
+	})
+
+
+	//分享朋友圈
+	onShareTimeline(() => {
+		return {
+			title: "咸虾米壁纸-" + pageName,
+			query: "id=" + queryParams.classid + "&name=" + pageName
+		}
 	})
 </script>
 
