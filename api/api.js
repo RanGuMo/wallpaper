@@ -42,3 +42,11 @@ export function apiGetSetupScore(data = {}) {
 		data
 	})
 }
+
+// 下载接口，这个接口的作用是，5秒钟内只能下载一张图片
+export function apiWriteDownload(data = {}) {
+	return request({
+		url: "/downloadWall",
+		data
+	})
+}

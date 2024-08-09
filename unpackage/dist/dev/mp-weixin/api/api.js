@@ -6,7 +6,9 @@ function apiGetBanner() {
   });
 }
 function apiGetDayRandom() {
-  return utils_request.request({ url: "/randomWall" });
+  return utils_request.request({
+    url: "/randomWall"
+  });
 }
 function apiGetNotice(data = {}) {
   return utils_request.request({
@@ -20,7 +22,28 @@ function apiGetClassify(data = {}) {
     data
   });
 }
+function apiGetClassList(data = {}) {
+  return utils_request.request({
+    url: "/wallList",
+    data
+  });
+}
+function apiGetSetupScore(data = {}) {
+  return utils_request.request({
+    url: "/setupScore",
+    data
+  });
+}
+function apiWriteDownload(data = {}) {
+  return utils_request.request({
+    url: "/downloadWall",
+    data
+  });
+}
 exports.apiGetBanner = apiGetBanner;
+exports.apiGetClassList = apiGetClassList;
 exports.apiGetClassify = apiGetClassify;
 exports.apiGetDayRandom = apiGetDayRandom;
 exports.apiGetNotice = apiGetNotice;
+exports.apiGetSetupScore = apiGetSetupScore;
+exports.apiWriteDownload = apiWriteDownload;

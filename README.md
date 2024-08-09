@@ -821,3 +821,8 @@ export const getLeftIconLeft = () => {
 </style>
 ```
 
+## 图片下载
+### 3.7.savelmageToPhotosAlbum保存壁纸到相册
+### 3.8.openSetting调用客户端授权信息以及各种异常处理
+### 3.9.try{}catch处理同步请求下载记录异常处理
+

@@ -35,12 +35,13 @@ const _sfc_main = {
       }, !__props.isMore ? {
         b: __props.item.picurl,
         c: common_vendor.t(__props.item.name),
-        d: common_vendor.t(common_vendor.unref(utils_common.getTimeDiffDescription)(__props.item.updateTime))
+        d: common_vendor.t(common_vendor.unref(utils_common.getTimeDiffDescription)(__props.item.updateTime)),
+        e: `/pages/classslist/classslist?id=${__props.item._id}&name=${__props.item.name}`
       } : {}, {
-        e: __props.isMore
+        f: __props.isMore
       }, __props.isMore ? {
-        f: common_assets._imports_0$2,
-        g: common_vendor.p({
+        g: common_assets._imports_0$1,
+        h: common_vendor.p({
           type: "more-filled",
           size: "34",
           color: "#fff"
@@ -49,5 +50,5 @@ const _sfc_main = {
     };
   }
 };
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-f4eafbca"], ["__file", "C:/Users/86182/Documents/HBuilderProjects/wallpaper/components/theme-item/theme-item.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-f4eafbca"]]);
 wx.createComponent(Component);

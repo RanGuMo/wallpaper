@@ -2,13 +2,14 @@
 const common_vendor = require("../../common/vendor.js");
 const _sfc_main = {};
 if (!Array) {
-  const _component_uni_tag = common_vendor.resolveComponent("uni-tag");
+  const _easycom_uni_tag2 = common_vendor.resolveComponent("uni-tag");
   const _easycom_uni_dateformat2 = common_vendor.resolveComponent("uni-dateformat");
-  (_component_uni_tag + _easycom_uni_dateformat2)();
+  (_easycom_uni_tag2 + _easycom_uni_dateformat2)();
 }
+const _easycom_uni_tag = () => "../../uni_modules/uni-tag/components/uni-tag/uni-tag.js";
 const _easycom_uni_dateformat = () => "../../uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat.js";
 if (!Math) {
-  _easycom_uni_dateformat();
+  (_easycom_uni_tag + _easycom_uni_dateformat)();
 }
 function _sfc_render(_ctx, _cache) {
   return {
@@ -23,5 +24,5 @@ function _sfc_render(_ctx, _cache) {
     })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-0f737f11"], ["__file", "C:/Users/86182/Documents/HBuilderProjects/wallpaper/pages/notice/detail.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-0f737f11"]]);
 wx.createPage(MiniProgramPage);

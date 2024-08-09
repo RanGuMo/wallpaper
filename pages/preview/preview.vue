@@ -1,5 +1,6 @@
 <template>
-	<view class="preview">
+	<!-- v-if="currentInfo" currentInfo有内容再渲染，否则小程序会报错 -->
+	<view class="preview" v-if="currentInfo">
 		<!--current 当前所在滑块的 index -->
 		<swiper circular :current="currentIndex" @change="swiperChange">
 			<swiper-item v-for="(item,index) in classList" :key="item._id">
@@ -26,7 +27,7 @@
 					<uni-icons type="star" size="28"></uni-icons>
 					<view class="text">{{currentInfo.score}}分</view>
 				</view>
-				<view class="box">
+				<view class="box" @click="clickDownload">
 					<uni-icons type="download" size="23"></uni-icons>
 					<view class="text">下载</view>
 				</view>
@@ -124,7 +125,8 @@
 	} from '@dcloudio/uni-app'
 
 	import {
-		apiGetSetupScore
+		apiGetSetupScore,
+		apiWriteDownload
 	} from '@/api/api.js'
 
 	// 0.1.获取索引
@@ -249,6 +251,95 @@
 	// 7.返回上一层
 	const goBack = () => {
 		uni.navigateBack();
+	}
+
+	// 8.点击下载
+	const clickDownload = async () => {
+
+		// #ifdef H5
+		uni.showModal({
+			content: "请长按保存壁纸",
+			showCancel: false
+		})
+		// #endif
+
+		// #ifndef H5
+		try {
+
+			uni.showLoading({
+				title: "下载中...",
+				mask: true
+			})
+			let {
+				classid,
+				_id: wallId
+			} = currentInfo.value;
+			let res = await apiWriteDownload({
+				classid,
+				wallId
+			})
+			if (res.errCode != 0) throw res;
+			uni.getImageInfo({
+				src: currentInfo.value.picurl,
+				success: (res) => {
+					uni.saveImageToPhotosAlbum({
+						filePath: res.path,
+						success: (res) => {
+							uni.showToast({
+								title: "保存成功，请到相册查看",
+								icon: "none"
+							})
+						},
+						fail: err => {
+							if (err.errMsg == 'saveImageToPhotosAlbum:fail cancel') {
+								uni.showToast({
+									title: '保存失败，请重新点击下载',
+									icon: "none"
+								})
+								return;
+							}
+							uni.showModal({
+								title: "授权提示",
+								content: "需要授权保存相册",
+								success: res => {
+									if (res.confirm) {
+										uni.openSetting({
+											success: (setting) => {
+												console.log(
+													setting);
+												if (setting
+													.authSetting[
+														'scope.writePhotosAlbum'
+													]) {
+													uni.showToast({
+														title: "获取授权成功",
+														icon: "none"
+													})
+												} else {
+													uni.showToast({
+														title: "获取权限失败",
+														icon: "none"
+													})
+												}
+											}
+										})
+									}
+								}
+							})
+						},
+						complete: () => {
+							uni.hideLoading();
+						}
+					})
+
+				}
+			})
+
+		} catch (err) {
+			console.log(err);
+			uni.hideLoading();
+		}
+		// #endif
 	}
 </script>
 
