@@ -33,7 +33,9 @@ const _sfc_main = {
       randomList.value = res.data;
     };
     const getNoticeList = async () => {
-      let res = await api_api.apiGetNotice({ select: true });
+      let res = await api_api.apiGetNotice({
+        select: true
+      });
       noticeList.value = res.data;
     };
     const getClassify = async () => {
@@ -51,6 +53,17 @@ const _sfc_main = {
         url: "/pages/preview/preview"
       });
     };
+    common_vendor.onShareAppMessage((e) => {
+      return {
+        title: "咸虾米壁纸，好看的手机壁纸",
+        path: "/pages/index/index"
+      };
+    });
+    common_vendor.onShareTimeline(() => {
+      return {
+        title: "咸虾米壁纸，好看的手机壁纸"
+      };
+    });
     return (_ctx, _cache) => {
       return {
         a: common_vendor.p({
@@ -109,4 +122,5 @@ const _sfc_main = {
   }
 };
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-1cf27b2a"]]);
+_sfc_main.__runtimeHooks = 6;
 wx.createPage(MiniProgramPage);

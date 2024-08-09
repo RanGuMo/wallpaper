@@ -22,6 +22,17 @@ const _sfc_main = {
       classifyList.value = res.data;
     };
     getClassify();
+    common_vendor.onShareAppMessage((e) => {
+      return {
+        title: "咸虾米壁纸，精选分类",
+        path: "/pages/classify/classify"
+      };
+    });
+    common_vendor.onShareTimeline(() => {
+      return {
+        title: "咸虾米壁纸，精选分类"
+      };
+    });
     return (_ctx, _cache) => {
       return {
         a: common_vendor.p({
@@ -41,4 +52,5 @@ const _sfc_main = {
   }
 };
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-6bcfa975"]]);
+_sfc_main.__runtimeHooks = 6;
 wx.createPage(MiniProgramPage);

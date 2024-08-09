@@ -7900,6 +7900,8 @@ const createHook = (lifecycle) => (hook, target = getCurrentInstance()) => {
 };
 const onLoad = /* @__PURE__ */ createHook(ON_LOAD);
 const onReachBottom = /* @__PURE__ */ createHook(ON_REACH_BOTTOM);
+const onShareTimeline = /* @__PURE__ */ createHook(ON_SHARE_TIMELINE);
+const onShareAppMessage = /* @__PURE__ */ createHook(ON_SHARE_APP_MESSAGE);
 exports._export_sfc = _export_sfc;
 exports.createSSRApp = createSSRApp;
 exports.e = e;
@@ -7910,6 +7912,8 @@ exports.n = n;
 exports.o = o;
 exports.onLoad = onLoad;
 exports.onReachBottom = onReachBottom;
+exports.onShareAppMessage = onShareAppMessage;
+exports.onShareTimeline = onShareTimeline;
 exports.p = p;
 exports.ref = ref;
 exports.resolveComponent = resolveComponent;

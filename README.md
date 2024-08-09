@@ -826,3 +826,5 @@ export const getLeftIconLeft = () => {
 ### 3.8.openSetting调用客户端授权信息以及各种异常处理
 ### 3.9.try{}catch处理同步请求下载记录异常处理
 
+
+### 3.10.onShareAppMessage分享好友和onShareTimeline分享到朋友圈
