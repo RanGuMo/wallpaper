@@ -1,6 +1,7 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const api_api = require("../../api/api.js");
+const utils_common = require("../../utils/common.js");
 if (!Array) {
   const _easycom_uni_load_more2 = common_vendor.resolveComponent("uni-load-more");
   _easycom_uni_load_more2();
@@ -33,6 +34,8 @@ const _sfc_main = {
       } = e;
       if (id)
         queryParams.classid = id;
+      if (!id)
+        utils_common.gotoHome();
       pageName = name;
       common_vendor.index.setNavigationBarTitle({
         title: name
@@ -56,6 +59,9 @@ const _sfc_main = {
         title: "咸虾米壁纸-" + pageName,
         query: "id=" + queryParams.classid + "&name=" + pageName
       };
+    });
+    common_vendor.onUnload(() => {
+      common_vendor.index.removeStorageSync("storageClassList");
     });
     return (_ctx, _cache) => {
       return common_vendor.e({

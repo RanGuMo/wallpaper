@@ -33,7 +33,8 @@
 				</view>
 			</view>
 		</view>
-		<uni-popup ref="infoPopup" type="bottom">
+		<!-- safe-area 是否适配底部安全区 -->
+		<uni-popup ref="infoPopup" type="bottom" :safe-area="false">
 			<view class="infoPopup">
 				<view class="popHeader">
 					<view></view>
@@ -82,6 +83,8 @@
 							声明：本图片来用户投稿，非商业使用，用于免费学习交流，如侵犯了您的权益，您可以拷贝壁纸ID举报至平台，邮箱513894357@qq.com，管理将删除侵权壁纸，维护您的权益。
 
 						</view>
+
+						<view class="safe-area-inset-bottom"></view>
 					</view>
 				</scroll-view>
 			</view>
@@ -267,7 +270,18 @@
 	}
 	// 7.返回上一层
 	const goBack = () => {
-		uni.navigateBack();
+		// uni.navigateBack();
+		// 分享出去后,返回失败就回到index页面
+		uni.navigateBack({
+			success: () => {
+
+			},
+			fail: (err) => {
+				uni.reLaunch({
+					url: "/pages/index/index"
+				})
+			}
+		})
 	}
 
 	// 8.点击下载

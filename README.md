@@ -828,3 +828,78 @@ export const getLeftIconLeft = () => {
 
 
 ### 3.10.onShareAppMessage分享好友和onShareTimeline分享到朋友圈
+
+
+### 3.11.处理popup底部弹窗空缺安全区域以及其他页面优化
+
+![](README_files/20.jpg)
+
+`safe-area`设为`false`，并且手动添加 `<view class="safe-area-inset-bottom"></view>`
+
+```vue
+<!-- safe-area 是否适配底部安全区 -->
+<uni-popup ref="infoPopup" type="bottom" :safe-area="false">
+	<view class="infoPopup">
+		<view class="popHeader">
+			<view></view>
+			<view class="title">壁纸信息</view>
+			<view class="close" @click="clickInfoClose">
+				<uni-icons type="closeempty" size="18" color="#999"></uni-icons>
+			</view>
+		</view>
+		<scroll-view scroll-y>
+			<view class="content">
+				<view class="row">
+					<view class="label">壁纸ID：</view>
+					<text selectable user-select class="value class">{{currentInfo._id}}</text>
+				</view>
+				<!-- <view class="row">
+					<view class="label">分类：</view>
+					<text selectable user-select class="value class">明星美女</text>
+				</view> -->
+				<view class="row">
+					<view class="label">发布者：</view>
+					<text selectable user-select class="value">{{currentInfo.nickname}}</text>
+				</view>
+				<view class="row">
+					<view class="label">评分：</view>
+
+					<view class="value roteBox">
+						<uni-rate readonly touchable :value="currentInfo.score" size="16" />
+						<text class="score">{{currentInfo.score}}分</text>
+					</view>
+				</view>
+
+				<view class="row">
+					<view class="label">摘要：</view>
+					<text selectable user-select class="value">{{currentInfo.description}}</text>
+				</view>
+				<view class="row">
+					<view class="label">标签：</view>
+					<view class="value tabs">
+						<view class="tab" v-for="tab in currentInfo.tabs">
+							{{tab}}
+						</view>
+					</view>
+				</view>
+
+				<view class="copyright">
+					声明：本图片来用户投稿，非商业使用，用于免费学习交流，如侵犯了您的权益，您可以拷贝壁纸ID举报至平台，邮箱513894357@qq.com，管理将删除侵权壁纸，维护您的权益。
+
+				</view>
+
+				<view class="safe-area-inset-bottom"></view>
+			</view>
+		</scroll-view>
+	</view>
+</uni-popup>
+
+
+// 安全区域的高度
+.safe-area-inset-bottom{
+	height: env(safe-area-inset-bottom);
+}
+
+```
+
+![](README_files/21.jpg)

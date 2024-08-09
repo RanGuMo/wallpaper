@@ -113,7 +113,15 @@ const _sfc_main = {
       }
     };
     const goBack = () => {
-      common_vendor.index.navigateBack();
+      common_vendor.index.navigateBack({
+        success: () => {
+        },
+        fail: (err) => {
+          common_vendor.index.reLaunch({
+            url: "/pages/index/index"
+          });
+        }
+      });
     };
     const clickDownload = async () => {
       try {
@@ -277,7 +285,8 @@ const _sfc_main = {
           "k": "infoPopup"
         }),
         D: common_vendor.p({
-          type: "bottom"
+          type: "bottom",
+          ["safe-area"]: false
         }),
         E: common_vendor.t(isScore.value ? "已经评分了~" : "壁纸评分"),
         F: common_vendor.p({

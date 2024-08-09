@@ -1,4 +1,5 @@
 "use strict";
+const common_vendor = require("../common/vendor.js");
 function getTimeDiffDescription(timestamp) {
   const now = Date.now();
   const diff = now - timestamp;
@@ -21,4 +22,19 @@ function getTimeDiffDescription(timestamp) {
     return null;
   }
 }
+function gotoHome() {
+  common_vendor.index.showModal({
+    title: "提示",
+    content: "页面有误将返回首页",
+    showCancel: false,
+    success: (res) => {
+      if (res.confirm) {
+        common_vendor.index.reLaunch({
+          url: "/pages/index/index"
+        });
+      }
+    }
+  });
+}
 exports.getTimeDiffDescription = getTimeDiffDescription;
+exports.gotoHome = gotoHome;

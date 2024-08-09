@@ -27,6 +27,7 @@
 	} from "vue";
 	import {
 		onLoad,
+		onUnload,
 		onReachBottom,
 		onShareAppMessage,
 		onShareTimeline
@@ -35,6 +36,11 @@
 	import {
 		apiGetClassList
 	} from "@/api/api.js"
+
+	import {
+		gotoHome
+	} from "@/utils/common.js"
+
 	//分类列表数据
 	const classList = ref([]);
 	// 2.触底加载更多 的时候是否继续发送请求
@@ -61,6 +67,7 @@
 			id = null, name = null
 		} = e;
 		if (id) queryParams.classid = id;
+		if (!id) gotoHome(); //没有id直接回到首页
 		pageName = name;
 		//1.1.修改导航标题
 		uni.setNavigationBarTitle({
@@ -92,6 +99,10 @@
 			title: "咸虾米壁纸-" + pageName,
 			query: "id=" + queryParams.classid + "&name=" + pageName
 		}
+	})
+	// 离开之后清空storageClassList缓存，防止串台
+	onUnload(() => {
+		uni.removeStorageSync("storageClassList")
 	})
 </script>
 
