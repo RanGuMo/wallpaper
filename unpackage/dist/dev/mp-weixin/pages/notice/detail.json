@@ -2,6 +2,7 @@
   "navigationBarTitleText": "公告详情",
   "usingComponents": {
     "uni-tag": "../../uni_modules/uni-tag/components/uni-tag/uni-tag",
-    "uni-dateformat": "../../uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat"
+    "uni-dateformat": "../../uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat",
+    "mp-html": "../../uni_modules/mp-html/components/mp-html/mp-html"
   }
 }

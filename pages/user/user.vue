@@ -27,7 +27,7 @@
 
         <navigator url="/pages/classslist/classslist?name=我的评分&type=score" class="row">
           <view class="left">
-            <uni-icons type="download-filled" size="20"></uni-icons>
+            <uni-icons type="star-filled" size="20"></uni-icons>
             <view class="text">我的评分</view>
           </view>
           <view class="right">
@@ -38,7 +38,7 @@
 
         <view class="row">
           <view class="left">
-            <uni-icons type="download-filled" size="20"></uni-icons>
+            <uni-icons type="chatboxes-filled" size="20"></uni-icons>
             <view class="text">联系客服</view>
           </view>
           <view class="right">
@@ -57,21 +57,34 @@
 
       </view>
     </view>
+
+
     <view class="section">
       <view class="list">
-        <view class="row" v-for="itme in 2">
+        <navigator url="/pages/notice/detail?id=653507c6466d417a3718e94b" class="row">
           <view class="left">
-            <uni-icons type="download-filled" size="20"></uni-icons>
-            <view class="text">我的下载</view>
+            <uni-icons type="notification-filled" size="20"></uni-icons>
+            <view class="text">订阅更新</view>
           </view>
           <view class="right">
-            <view class="text">66</view>
+            <view class="text"></view>
             <uni-icons type="right" size="15" color="#aaa"></uni-icons>
           </view>
-        </view>
+        </navigator>
 
+        <navigator url="/pages/notice/detail?id=6536358ce0ec19c8d67fbe82" class="row">
+          <view class="left">
+            <uni-icons type="flag-filled" size="20"></uni-icons>
+            <view class="text">常见问题</view>
+          </view>
+          <view class="right">
+            <view class="text"></view>
+            <uni-icons type="right" size="15" color="#aaa"></uni-icons>
+          </view>
+        </navigator>
       </view>
     </view>
+
   </view>
 
   <view class="loadingLayout" v-else>

@@ -83,7 +83,8 @@ const _sfc_main = {
         d: common_vendor.f(noticeList.value, (item, k0, i0) => {
           return {
             a: common_vendor.t(item.title),
-            b: item._id
+            b: "/pages/notice/detail?id=" + item._id,
+            c: item._id
           };
         }),
         e: common_vendor.p({

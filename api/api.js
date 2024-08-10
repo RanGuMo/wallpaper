@@ -74,3 +74,11 @@ export function apiGetHistoryList(data={}){
 		data
 	})
 }
+
+// 公告详情接口
+export function apiNoticeDetail(data={}){
+	return request({
+		url:"/wallNewsDetail",
+		data
+	})
+}

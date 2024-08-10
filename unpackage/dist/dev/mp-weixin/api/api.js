@@ -58,6 +58,12 @@ function apiGetHistoryList(data = {}) {
     data
   });
 }
+function apiNoticeDetail(data = {}) {
+  return utils_request.request({
+    url: "/wallNewsDetail",
+    data
+  });
+}
 exports.apiDetailWall = apiDetailWall;
 exports.apiGetBanner = apiGetBanner;
 exports.apiGetClassList = apiGetClassList;
@@ -66,5 +72,6 @@ exports.apiGetDayRandom = apiGetDayRandom;
 exports.apiGetHistoryList = apiGetHistoryList;
 exports.apiGetNotice = apiGetNotice;
 exports.apiGetSetupScore = apiGetSetupScore;
+exports.apiNoticeDetail = apiNoticeDetail;
 exports.apiUserInfo = apiUserInfo;
 exports.apiWriteDownload = apiWriteDownload;

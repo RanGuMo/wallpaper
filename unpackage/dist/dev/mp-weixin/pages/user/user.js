@@ -41,7 +41,7 @@ const _sfc_main = {
           color: "#aaa"
         }),
         h: common_vendor.p({
-          type: "download-filled",
+          type: "star-filled",
           size: "20"
         }),
         i: common_vendor.t(userinfo.value.scoreSize),
@@ -51,7 +51,7 @@ const _sfc_main = {
           color: "#aaa"
         }),
         k: common_vendor.p({
-          type: "download-filled",
+          type: "chatboxes-filled",
           size: "20"
         }),
         l: common_vendor.p({
@@ -59,24 +59,27 @@ const _sfc_main = {
           size: "15",
           color: "#aaa"
         }),
-        m: common_vendor.f(2, (itme, k0, i0) => {
-          return {
-            a: "0f7520f0-6-" + i0,
-            b: "0f7520f0-7-" + i0
-          };
-        }),
-        n: common_vendor.p({
-          type: "download-filled",
+        m: common_vendor.p({
+          type: "notification-filled",
           size: "20"
         }),
+        n: common_vendor.p({
+          type: "right",
+          size: "15",
+          color: "#aaa"
+        }),
         o: common_vendor.p({
+          type: "flag-filled",
+          size: "20"
+        }),
+        p: common_vendor.p({
           type: "right",
           size: "15",
           color: "#aaa"
         })
       } : {
-        p: common_vendor.unref(utils_system.getNavBarHeight)() + "px",
-        q: common_vendor.p({
+        q: common_vendor.unref(utils_system.getNavBarHeight)() + "px",
+        r: common_vendor.p({
           status: "loading"
         })
       });
