@@ -46,6 +46,12 @@ function apiDetailWall(data = {}) {
     data
   });
 }
+function apiUserInfo(data = {}) {
+  return utils_request.request({
+    url: "/userInfo",
+    data
+  });
+}
 exports.apiDetailWall = apiDetailWall;
 exports.apiGetBanner = apiGetBanner;
 exports.apiGetClassList = apiGetClassList;
@@ -53,4 +59,5 @@ exports.apiGetClassify = apiGetClassify;
 exports.apiGetDayRandom = apiGetDayRandom;
 exports.apiGetNotice = apiGetNotice;
 exports.apiGetSetupScore = apiGetSetupScore;
+exports.apiUserInfo = apiUserInfo;
 exports.apiWriteDownload = apiWriteDownload;

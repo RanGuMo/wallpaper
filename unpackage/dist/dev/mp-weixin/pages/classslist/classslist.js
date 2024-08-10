@@ -87,6 +87,6 @@ const _sfc_main = {
     };
   }
 };
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-5015b211"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-5015b211"], ["__file", "C:/Users/86182/Documents/HBuilderProjects/wallpaper/pages/classslist/classslist.vue"]]);
 _sfc_main.__runtimeHooks = 6;
 wx.createPage(MiniProgramPage);

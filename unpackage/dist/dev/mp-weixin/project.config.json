@@ -11,6 +11,7 @@
     "minified": false,
     "newFeature": true,
     "bigPackageSizeSupport": true,
+    "packNpmRelationList": [],
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],

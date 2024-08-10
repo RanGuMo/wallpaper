@@ -40,7 +40,7 @@ const _sfc_main = {
       } : {}, {
         f: __props.isMore
       }, __props.isMore ? {
-        g: common_assets._imports_0$1,
+        g: common_assets._imports_0,
         h: common_vendor.p({
           type: "more-filled",
           size: "34",
@@ -50,5 +50,5 @@ const _sfc_main = {
     };
   }
 };
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-f4eafbca"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-f4eafbca"], ["__file", "C:/Users/86182/Documents/HBuilderProjects/wallpaper/components/theme-item/theme-item.vue"]]);
 wx.createComponent(Component);

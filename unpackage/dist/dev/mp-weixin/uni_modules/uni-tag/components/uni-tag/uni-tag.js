@@ -90,5 +90,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     e: common_vendor.o((...args) => $options.onClick && $options.onClick(...args))
   } : {});
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-1f94d070"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-1f94d070"], ["__file", "C:/Users/86182/Documents/HBuilderProjects/wallpaper/uni_modules/uni-tag/components/uni-tag/uni-tag.vue"]]);
 wx.createComponent(Component);

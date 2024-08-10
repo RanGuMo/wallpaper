@@ -315,6 +315,6 @@ const _sfc_main = {
     };
   }
 };
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-2dad6c07"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-2dad6c07"], ["__file", "C:/Users/86182/Documents/HBuilderProjects/wallpaper/pages/preview/preview.vue"]]);
 _sfc_main.__runtimeHooks = 6;
 wx.createPage(MiniProgramPage);

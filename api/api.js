@@ -58,3 +58,11 @@ export function apiDetailWall(data = {}) {
 		data
 	})
 }
+
+// 个人中心
+export function apiUserInfo(data={}){
+	return request({
+		url:"/userInfo",
+		data
+	})
+}
