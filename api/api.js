@@ -66,3 +66,11 @@ export function apiUserInfo(data={}){
 		data
 	})
 }
+
+// 获取 我的下载和我的评分数据 接口
+export function apiGetHistoryList(data={}){
+	return request({
+		url:"/userWallList",
+		data
+	})
+}

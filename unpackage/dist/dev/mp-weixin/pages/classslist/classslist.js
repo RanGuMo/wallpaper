@@ -1,7 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const api_api = require("../../api/api.js");
-const utils_common = require("../../utils/common.js");
 if (!Array) {
   const _easycom_uni_load_more2 = common_vendor.resolveComponent("uni-load-more");
   _easycom_uni_load_more2();
@@ -21,7 +20,11 @@ const _sfc_main = {
     };
     let pageName;
     const getClassList = async () => {
-      let res = await api_api.apiGetClassList(queryParams);
+      let res;
+      if (queryParams.classid)
+        res = await api_api.apiGetClassList(queryParams);
+      if (queryParams.type)
+        res = await api_api.apiGetHistoryList(queryParams);
       classList.value = [...classList.value, ...res.data];
       if (queryParams.pageSize > res.data.length)
         noData.value = true;
@@ -30,12 +33,13 @@ const _sfc_main = {
     common_vendor.onLoad((e) => {
       let {
         id = null,
-        name = null
+        name = null,
+        type = null
       } = e;
+      if (type)
+        queryParams.type = type;
       if (id)
         queryParams.classid = id;
-      if (!id)
-        utils_common.gotoHome();
       pageName = name;
       common_vendor.index.setNavigationBarTitle({
         title: name

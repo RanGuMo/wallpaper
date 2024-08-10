@@ -14,7 +14,7 @@
     </view>
     <view class="section">
       <view class="list">
-        <navigator url="/pages/classslist/classslist" class="row">
+        <navigator url="/pages/classslist/classslist?name=我的下载&type=download" class="row">
           <view class="left">
             <uni-icons type="download-filled" size="20"></uni-icons>
             <view class="text">我的下载</view>
@@ -25,7 +25,7 @@
           </view>
         </navigator>
 
-        <navigator url="/pages/classslist/classslist" class="row">
+        <navigator url="/pages/classslist/classslist?name=我的评分&type=score" class="row">
           <view class="left">
             <uni-icons type="download-filled" size="20"></uni-icons>
             <view class="text">我的评分</view>

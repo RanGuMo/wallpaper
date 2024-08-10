@@ -52,11 +52,18 @@ function apiUserInfo(data = {}) {
     data
   });
 }
+function apiGetHistoryList(data = {}) {
+  return utils_request.request({
+    url: "/userWallList",
+    data
+  });
+}
 exports.apiDetailWall = apiDetailWall;
 exports.apiGetBanner = apiGetBanner;
 exports.apiGetClassList = apiGetClassList;
 exports.apiGetClassify = apiGetClassify;
 exports.apiGetDayRandom = apiGetDayRandom;
+exports.apiGetHistoryList = apiGetHistoryList;
 exports.apiGetNotice = apiGetNotice;
 exports.apiGetSetupScore = apiGetSetupScore;
 exports.apiUserInfo = apiUserInfo;
