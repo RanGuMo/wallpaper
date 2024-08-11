@@ -32,16 +32,19 @@ const _sfc_main = {
     return (_ctx, _cache) => {
       return common_vendor.e({
         a: !__props.isMore
-      }, !__props.isMore ? {
+      }, !__props.isMore ? common_vendor.e({
         b: __props.item.picurl,
         c: common_vendor.t(__props.item.name),
-        d: common_vendor.t(common_vendor.unref(utils_common.getTimeDiffDescription)(__props.item.updateTime)),
-        e: `/pages/classslist/classslist?id=${__props.item._id}&name=${__props.item.name}`
+        d: common_vendor.unref(utils_common.getTimeDiffDescription)(__props.item.updateTime)
+      }, common_vendor.unref(utils_common.getTimeDiffDescription)(__props.item.updateTime) ? {
+        e: common_vendor.t(common_vendor.unref(utils_common.getTimeDiffDescription)(__props.item.updateTime))
       } : {}, {
-        f: __props.isMore
+        f: `/pages/classslist/classslist?id=${__props.item._id}&name=${__props.item.name}`
+      }) : {}, {
+        g: __props.isMore
       }, __props.isMore ? {
-        g: common_assets._imports_0,
-        h: common_vendor.p({
+        h: common_assets._imports_0,
+        i: common_vendor.p({
           type: "more-filled",
           size: "34",
           color: "#fff"

@@ -3,7 +3,7 @@
 		<navigator :url="`/pages/classslist/classslist?id=${item._id}&name=${item.name}`" class="box" v-if="!isMore">
 			<image class="pic" :src="item.picurl" mode="aspectFill"></image>
 			<view class="mask">{{item.name}}</view>
-			<view class="tab">{{getTimeDiffDescription(item.updateTime)}}前更新</view>
+			<view class="tab" v-if="getTimeDiffDescription(item.updateTime)">{{getTimeDiffDescription(item.updateTime)}}前更新</view>
 		</navigator>
 		<navigator url="/pages/classify/classify" open-type="reLaunch" class="box more" v-if="isMore">
 			<image class="pic" src="../../common/images/more.jpg" mode="aspectFill"></image>

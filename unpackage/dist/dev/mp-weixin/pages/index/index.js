@@ -71,10 +71,18 @@ const _sfc_main = {
           title: "推荐"
         }),
         b: common_vendor.f(bannerList.value, (item, k0, i0) => {
-          return {
-            a: item.picurl,
-            b: item._id
-          };
+          return common_vendor.e({
+            a: item.target == "miniProgram"
+          }, item.target == "miniProgram" ? {
+            b: item.picurl,
+            c: item.url,
+            d: item.appid
+          } : {
+            e: item.picurl,
+            f: `/pages/classslist/classslist?${item.url}`
+          }, {
+            g: item._id
+          });
         }),
         c: common_vendor.p({
           type: "sound-filled",

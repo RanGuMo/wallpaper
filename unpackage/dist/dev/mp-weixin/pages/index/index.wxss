@@ -36,7 +36,11 @@
   height: 100%;
   padding: 0 30rpx;
 }
-.homeLayout .banner swiper-item image.data-v-1cf27b2a {
+.homeLayout .banner swiper-item .like.data-v-1cf27b2a {
+  width: 100%;
+  height: 100%;
+}
+.homeLayout .banner swiper-item .like image.data-v-1cf27b2a {
   width: 100%;
   height: 100%;
   border-radius: 10rpx;
