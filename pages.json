@@ -49,6 +49,13 @@
 			{
 				"navigationBarTitleText" : "公告详情"
 			}
+		},
+		{
+		  "path" : "pages/search/search",
+		  "style" : 
+		  {
+		    "navigationBarTitleText" : "搜索"
+		  }
 		}
 	],
 	"globalStyle": {

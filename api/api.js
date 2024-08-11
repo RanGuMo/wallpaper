@@ -82,3 +82,11 @@ export function apiNoticeDetail(data={}){
 		data
 	})
 }
+
+// 搜索图片接口
+export function apiSearchData(data={}){
+	return request({
+		url:"/searchWall",
+		data
+	})
+}
